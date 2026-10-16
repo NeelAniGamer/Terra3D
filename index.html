@@ -5,7 +5,39 @@
      crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terra3D - Interactive World Atlas</title>
+  <meta name="description" content="Explore countries, continents, landmarks, and cultures through an interactive 3D world atlas with searchable geographic data and visual learning tools." />
+  <meta property="og:site_name" content="Class Of Learners" />
+  <meta property="og:title" content="Terra3D | Interactive 3D World Atlas" />
+  <meta property="og:description" content="Explore countries, continents, landmarks, and cultures through an interactive 3D world atlas with searchable geographic data and visual learning tools." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://advancedlogiclabs.dpdns.org/Terra3D/" />
+  <meta property="og:image" content="https://advancedlogiclabs.dpdns.org/og/terra3d.jpg" />
+  <meta property="og:image:alt" content="Terra3D interactive 3D world atlas" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Terra3D | Interactive 3D World Atlas" />
+  <meta name="twitter:description" content="Explore countries, continents, landmarks, and cultures through an interactive 3D world atlas with searchable geographic data and visual learning tools." />
+  <meta name="twitter:image" content="https://advancedlogiclabs.dpdns.org/og/terra3d.jpg" />
+  <meta name="twitter:image:alt" content="Terra3D interactive 3D world atlas" />
+  <link rel="canonical" href="https://advancedlogiclabs.dpdns.org/Terra3D/" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <title>Terra3D | Interactive 3D World Atlas</title>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Terra3D",
+      "url": "https://advancedlogiclabs.dpdns.org/Terra3D/",
+      "description": "An interactive 3D world atlas for exploring countries, continents, landmarks, cultures, and geographic data.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web browser",
+      "browserRequirements": "Requires JavaScript and WebGL.",
+      "image": "https://advancedlogiclabs.dpdns.org/og/terra3d.jpg",
+      "inLanguage": "en-IN",
+      "isPartOf": { "@id": "https://advancedlogiclabs.dpdns.org/#website" },
+      "author": { "@id": "https://advancedlogiclabs.dpdns.org/#organization" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+  </script>
 
   <!-- Google Fonts: Inter & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +46,8 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <!-- Shared mobile touch standards (tap targets, safe areas) -->
+  <link rel="stylesheet" href="../col-mobile.css">
 
   <!-- Global Error Handler to debug browser console issues directly on screen -->
   <script>
@@ -30,7 +64,9 @@
       errDiv.style.fontFamily = 'monospace';
       errDiv.style.fontSize = '14px';
       errDiv.style.whiteSpace = 'pre-wrap';
-      errDiv.innerHTML = '<strong>[Terra3D Critical Error]:</strong> ' + e.message + ' at ' + e.filename + ':' + e.lineno;
+      const label = document.createElement('strong');
+      label.textContent = '[Terra3D Critical Error]: ';
+      errDiv.append(label, document.createTextNode(e.message + ' at ' + e.filename + ':' + e.lineno));
       document.body.appendChild(errDiv);
     });
   </script>
@@ -44,6 +80,8 @@
       }
     }
   </script>
+    <link rel="stylesheet" href="../liquid-glass.css">
+    <script defer src="../pull-refresh.js"></script>
 </head>
 <body>
   <!-- Full-screen container for Three.js canvas -->
@@ -105,7 +143,7 @@
           <span>SETTINGS</span>
         </button>
       </div>
-      <div class="menu-credits-highlight">Made by Aryaman</div>
+      <div class="menu-credits-highlight">Special Space Credit &bull; Aaryaman Jadhav &amp; Yashraj Jadhav</div>
     </div>
     
     <div class="menu-footer">
@@ -128,10 +166,10 @@
       <button id="drawer-close">&times;</button>
     </div>
     <div id="drawer-tabs">
-      <button class="drawer-tab" data-tab="history">📜 History</button>
-      <button class="drawer-tab" data-tab="demographics">📊 Current State</button>
-      <button class="drawer-tab" data-tab="geography">🌍 Geography</button>
-      <button class="drawer-tab" data-tab="culture">🎭 Culture</button>
+      <button class="drawer-tab" data-tab="history"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>History</button>
+      <button class="drawer-tab" data-tab="demographics"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Current State</button>
+      <button class="drawer-tab" data-tab="geography"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Geography</button>
+      <button class="drawer-tab" data-tab="culture"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Culture</button>
     </div>
     <div id="drawer-content">
       <div id="tab-history" class="tab-panel"></div>
@@ -247,17 +285,17 @@
         <!-- Credits Tab Panel -->
         <div id="settings-tab-credits" class="settings-tab-panel">
           <div class="credits-container">
-            <div class="credits-item">
-              <div class="credits-role">Owner</div>
-              <div class="credits-name">Aryaman J.</div>
+            <div class="credits-item special-space-credit-card">
+              <div class="credits-role">Special Space Credit</div>
+              <div class="credits-name font-gradient">Aaryaman Jadhav &amp; Yashraj Jadhav</div>
             </div>
             <div class="credits-item">
-              <div class="credits-role">Game Designer</div>
-              <div class="credits-name">Aryaman J., Ansh P., Neel B.</div>
+              <div class="credits-role">3D Systems &amp; Space Architecture</div>
+              <div class="credits-name">Aaryaman Jadhav</div>
             </div>
             <div class="credits-item">
-              <div class="credits-role">MasterMind</div>
-              <div class="credits-name font-gradient">Aryaman J., Ansh P., Neel B.</div>
+              <div class="credits-role">UI/UX &amp; Space Design</div>
+              <div class="credits-name">Yashraj Jadhav</div>
             </div>
             <div class="credits-item">
               <div class="credits-role">Belongs to</div>
@@ -278,5 +316,6 @@
 
   <!-- Main JavaScript Module -->
   <script type="module" src="./main.js"></script>
+  <script defer src="../col-ui.js"></script>
 </body>
 </html>
